@@ -7,15 +7,19 @@ import { AuthGuard } from './modules/auth/auth.guard';
 import { CategoriesModule } from './modules/categories/categories.module';
 import { BankAccountsModule } from './modules/bank-accounts/bank-accounts.module';
 import { TransactionsModule } from './modules/transactions/transactions.module';
+import { RecurringTransactionsModule } from './modules/recurring-transactions/recurring-transactions.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
+    AuthModule,
     UsersModule,
     DatabaseModule,
-    AuthModule,
     CategoriesModule,
     BankAccountsModule,
     TransactionsModule,
+    RecurringTransactionsModule,
+    ScheduleModule.forRoot(),
   ],
   controllers: [],
   providers: [
