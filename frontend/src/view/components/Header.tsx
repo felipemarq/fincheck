@@ -15,30 +15,10 @@ export const Header = () => {
           <Menu className="h-5 w-5 md:hidden" />
         </SheetTrigger>
         <SheetContent side="left" className="bg-[#F1F3F5] flex flex-col gap-12">
-          <Logo className="h-8 text-primary" />
+          <Link to="/">
+            <Logo className="h-8 text-primary" />
+          </Link>
           <nav className="flex flex-col  gap-6 text-lg font-medium">
-            <div className="flex justify-start items-center gap-4">
-              <BankAccountIcon />
-              <span className="text-primary">Contas Bancárias</span>
-            </div>
-
-            <div className="flex justify-start items-center gap-4">
-              <div className="w-11 h-11 bg-orange-100 rounded-full flex items-center justify-center border-2 border-white">
-                <CircleUserRound className="text-orange-600" />
-              </div>
-              <span className="text-primary">Contatos</span>
-            </div>
-
-            <Link
-              to="/contacts"
-              className="flex justify-start items-center gap-4"
-            >
-              <div className="w-11 h-11 bg-orange-100 rounded-full flex items-center justify-center border-2 border-white">
-                <CircleUserRound className="text-orange-600" />
-              </div>
-
-              <span className="text-primary">Contatos</span>
-            </Link>
             <Link
               to="/credit-cards"
               className="flex justify-start items-center gap-4"
@@ -60,10 +40,31 @@ export const Header = () => {
 
               <span className="text-primary">Compras Parceladas</span>
             </Link>
+
+            <Link
+              to="/contacts"
+              className="flex justify-start items-center gap-4"
+            >
+              <div className="flex justify-start items-center gap-4">
+                <BankAccountIcon />
+                <span className="text-primary">Contas Bancárias</span>
+              </div>
+            </Link>
+
+            <Link
+              to="/contacts"
+              className="flex justify-start items-center gap-4"
+            >
+              <div className="w-11 h-11 bg-orange-100 rounded-full flex items-center justify-center border-2 border-white">
+                <CircleUserRound className="text-orange-600" />
+              </div>
+
+              <span className="text-primary">Contatos</span>
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>
-      <span className="font-semibold text-2xl text-primary">
+      <span className="font-semibold lg:text-2xl text-primary md:text-base">
         Bem vindo, {user?.name}
       </span>
       <UserMenu />

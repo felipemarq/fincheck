@@ -42,20 +42,6 @@ export const Sidebar = ({ className }: SidebarProps) => {
           </div>
           <div className="flex-1  h-full">
             <Menu>
-              <MenuItem icon={<BankAccountIcon />}>
-                <span className="text-primary">Contas Bancárias</span>
-              </MenuItem>
-              <Link to="/contacts">
-                <MenuItem
-                  icon={
-                    <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center border-2 border-white">
-                      <CircleUserRound className="text-orange-600" />
-                    </div>
-                  }
-                >
-                  <span className="text-primary">Contatos</span>
-                </MenuItem>
-              </Link>
               <Link to="/credit-cards">
                 <MenuItem
                   icon={
@@ -67,7 +53,6 @@ export const Sidebar = ({ className }: SidebarProps) => {
                   <span className="text-primary">Cartões</span>
                 </MenuItem>
               </Link>
-
               <Link to="/installment-purchases">
                 <MenuItem
                   icon={
@@ -77,6 +62,22 @@ export const Sidebar = ({ className }: SidebarProps) => {
                   }
                 >
                   <span className="text-primary">Compras Parceladas</span>
+                </MenuItem>
+              </Link>{' '}
+              <Link to="/contacts">
+                <MenuItem icon={<BankAccountIcon />}>
+                  <span className="text-primary">Contas Bancárias</span>
+                </MenuItem>
+              </Link>
+              <Link to="/contacts">
+                <MenuItem
+                  icon={
+                    <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center border-2 border-white">
+                      <CircleUserRound className="text-orange-600" />
+                    </div>
+                  }
+                >
+                  <span className="text-primary">Contatos</span>
                 </MenuItem>
               </Link>
             </Menu>
