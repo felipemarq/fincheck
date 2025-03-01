@@ -1,4 +1,5 @@
 //import { Tabs, TabsList, TabsTrigger } from '@/view/components/Tabs';
+import { useState } from 'react';
 import { cn } from '../../../app/utils/cn';
 import ActionButtons from './components/ActionsButton';
 import { BarChart } from './components/BarChart';
@@ -17,6 +18,8 @@ import { NewContactModal } from './modals/NewContactModal';
 import { NewCreditCardModal } from './modals/NewCreditCardModal';
 import { NewInstallmentPurchaseModal } from './modals/NewInstallmentPurchaseModal';
 import { NewTransactionModal } from './modals/NewTransactionModal';
+import { Button } from '@/view/components/Button';
+import { TourGuide } from '@/view/components/TourGuide';
 
 const SystemVersion = () => {
   return (
@@ -31,6 +34,26 @@ const SystemVersion = () => {
 };
 
 const Dashboard = () => {
+  const [startTour, setStartTour] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+  const [isFabOpen, setIsFabOpen] = useState(false);
+
+  const handleSOpenFab = () => {
+    setIsFabOpen(true);
+  };
+
+  const handleCloseFab = () => {
+    setIsFabOpen(false);
+  };
+
+  const handleStartTour = () => {
+    setStartTour(true);
+  };
+
+  const handleTourEnd = () => {
+    setStartTour(false);
+  };
+
   return (
     <DashboardProvider>
       <DashboardContext.Consumer>
@@ -45,6 +68,18 @@ const Dashboard = () => {
                 </TabsList>
               </Tabs>
             </div> */}
+            <Button className="" onClick={handleStartTour}>
+              Start Tour
+            </Button>
+            {startTour && (
+              <TourGuide
+                start={startTour}
+                setStartTour={setStartTour}
+                onTourEnd={handleTourEnd}
+                onFabOpen={handleSOpenFab}
+                onFabClose={handleCloseFab}
+              />
+            )}
             <main className="grid gap-4 p-2 lg:p-8 md:gap-8 grid-cols-12 auto-rows-[150px] -lg:grid-rows-12- h-full w-full md:mb-5 overflow-y-auto">
               <TotalBalance className="lg:col-span-5 row-span-1 lg:row-span-1 col-span-12" />
               <MonthlySummary className="lg:col-span-4 row-span-1 lg:row-span-1 col-span-12" />
@@ -58,7 +93,7 @@ const Dashboard = () => {
               <PieChart className="lg:col-span-4 row-span-2 lg:row-span-2 col-span-12" />
             </main>
 
-            <Fab />
+            <Fab open={isFabOpen} />
             <NewAccountModal />
             <NewTransactionModal />
             <NewCreditCardModal />

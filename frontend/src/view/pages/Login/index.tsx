@@ -32,7 +32,7 @@ const Login = () => {
           type="email"
           error={errors.email?.message}
           placeholder="E-mail"
-          {...register('email')}
+          {...register('email')} 
         />
 
         <Input

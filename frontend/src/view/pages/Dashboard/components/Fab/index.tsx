@@ -6,7 +6,7 @@ import { BankAccountIcon } from '../../../../components/icons/BankAccountIcon';
 import { useDashboard } from '../DashboardContext/useDashboard';
 import { CircleUserRound, CreditCard, ScanLine } from 'lucide-react';
 
-export const Fab = () => {
+export const Fab = ({ open }: { open?: boolean }) => {
   const {
     openNewAccountModal,
     openNewTransactionModal,
@@ -15,15 +15,15 @@ export const Fab = () => {
     openNewInstallmentPurchaseModal,
   } = useDashboard();
   return (
-    <div className="fixed right-4 bottom-4">
-      <DropdownMenu.Root>
+    <div className="fixed right-4 bottom-4 react-joyride-target">
+      <DropdownMenu.Root open={open}>
         <DropdownMenu.Trigger>
           <button className=" text-white bg-teal-900 w-12 h-12 flex justify-center items-center rounded-full ">
             <PlusIcon className="w-6 h-6" />
           </button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Content>
+        <DropdownMenu.Content className="react-joyride-target-2">
           <DropdownMenu.Item
             className="gap-2"
             onSelect={() => openNewTransactionModal('EXPENSE')}
